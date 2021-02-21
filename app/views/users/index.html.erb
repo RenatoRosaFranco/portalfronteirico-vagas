@@ -7,6 +7,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<div class='col-md-12 text-center'>
+					<%= image_tag('logo.png', class: 'logo') %>
+				</div>
 				
 				<div class="col-md-8 col-md-offset-2">
 					<%= form_for(:search) do |f| %>
@@ -14,15 +17,25 @@
 					<div class='panel panel-default'>
 						<div class='panel-body'>
 					  	<div class="col-md-5">
-					    	<%= f.text_field :name, class: 'form-control',
-					    	required: 'required', autocomplete: 'off',
-					    	placeholder: 'Empresa' %>
+					  		<div class='input-group'>
+					  			<div class='input-group-addon'>
+					  				<i class="fas fa-building"></i>
+					  			</div>
+					    		<%= f.text_field :name, class: 'form-control',
+					    		required: 'required', autocomplete: 'off',
+					    		placeholder: 'Empresa' %>
+					  		</div>
 					  	</div>
 
 					  	<div class='col-md-5'>
-				       	<%= f.text_field :location, class: 'form-control',
-				       	required: 'required', autocomplete: 'off',
-				       	placeholder: 'Local' %>
+					  		<div class='input-group'>
+					  			<div class='input-group-addon'>
+					  				<i class="fas fa-map-marker-alt"></i>
+					  			</div>
+				       		<%= f.text_field :location, class: 'form-control',
+				       		required: 'required', autocomplete: 'off',
+				       		placeholder: 'Local' %>
+				    		</div>
 				    	</div>
 					
 					  	<div class="col-md-2 text-center">

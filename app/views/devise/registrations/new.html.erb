@@ -5,6 +5,9 @@
         <div class="col-md-4 col-md-offset-4">
           <div class="panel panel-default">
             <div class="panel-body">
+              <div class='text-center'>
+                <%= image_tag('logo.png', style: 'width: 84px; height: 84px; border-radius: 84px;') %>
+              </div>
               <h2 class='text-center bold'>Sign up</h2>
               <hr>
 
@@ -33,7 +36,8 @@
                 </div>
 
                 <div class="actions"> <br />
-                  <%= f.submit "Sign up", class: 'btn btn-primary btn-lg' %>
+                  <%= f.submit "Sign up", class: 'btn btn-primary btn-lg',
+                  style: 'width: 100%;' %>
                 </div>
               <% end %>
 

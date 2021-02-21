@@ -18,7 +18,7 @@
 
 body {
   position: relative;
-  background-color: #f7f7f7;
+  background-color: #e7e7e7;
   font-size: 16px;
 }
 
@@ -41,8 +41,10 @@ textarea {
 header {
   .navbar-default {
     position: relative;
-    background-color: #EEE;
-    
+    background-color: #01355c;
+    border: 1px solid #01355c;
+    border-radius: 0px;
+
     .navbar-brand {
       position: relative;
       text-transform: uppercase;
@@ -51,8 +53,19 @@ header {
   }
 }
 
+.logo {
+  position: relative;
+  width: 144px;
+  height: 144px;
+  border-radius: 144px;
+  margin-top: -10px;
+  margin-bottom: 30px;
+  background-color: #EEE;
+}
+
 #presenter {
   position: relative;
+  background-color: #01355c;
   margin-top: -20px;
 }
 

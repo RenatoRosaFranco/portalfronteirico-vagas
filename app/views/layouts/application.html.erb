@@ -17,5 +17,11 @@
     <%= render 'layouts/header' %>  
       <%= yield %>
     <%= render 'layouts/footer' %>
+  
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v9.0&appId=557006248313894&autoLogAppEvents=1" nonce="NeOchGwo"></script>
+
+    <!-- addons -->
+    <%= render 'shared/freshchat' %>
   </body>
 </html>
