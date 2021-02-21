@@ -1,0 +1,28 @@
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<%= link_to 'Adicionar Vaga', new_job_path %>
+
+				<div id="search">
+					<%= form_for(:search, { url: search_jobs_path, method: :get }) do |f| %>
+						<div class="field">
+							<%= f.text_field :q, placeholder: 'Titulo' %>
+						</div>
+					<% end %>
+				</div>
+			  
+			  <% @jobs.each do |job| %>
+          <div class="job">
+          	<h4><%= link_to job.title, job_path(job) %></h4>
+          	<p><%= job.description %></p>
+          </div>
+			  <% end %>
+
+			 <% if @jobs.empty? %>
+			 	<p>Nenhuma vaga encontrada.</p>
+			 <% end %>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,67 @@
+<%= form_for(job) do |f| %>
+	<%= has_errors?(job) %>
+
+	<div class="field">
+		<%= f.label :title, 'Titulo' %> <br />
+		<%= f.text_field :title, class: 'form-control', required: 'required',
+		placeholder: 'Titulo da Vaga' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :description, 'Descrição' %> <br />
+		<%= f.text_area :description, class: 'form-control', required: 'required', 
+		placeholder: 'Descrição da Vaga', autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :occupation_area_id, 'Área de Ocupação' %>
+		<%= f.collection_select(:occupation_area_id, OccupationArea.all, :id, :name,
+		{ prompt: 'Selecionar Área de Ocupação' }, { class: 'form-control', required: 'required'}) %>
+	</div>
+
+	<div class="field">
+		<%= f.label :hiring_type_id, 'Tipo de Contratação' %>
+		<%= f.collection_select(:hiring_type_id, HiringType.all, :id, :name,
+		{ prompt: 'Selecionar Tipo de Contratação' }, { class: 'form-control', required: 'required'}) %>
+	</div>
+
+	<div class="field">
+		<%= f.label :salary, 'Salário' %>
+		<%= f.number_field :salary, class: 'form-control', required: 'required',
+		placeholder: 'Digite o Salário', autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<div class="field">
+			<%= f.label :modality, 'Localização' %>
+			<%= f.radio_button :modality, 'Office' %> Presencial 
+			<%= f.radio_button :modality, 'Remote' %> Remoto
+		</div>
+		
+		<%= f.text_field :location, class: 'form-control',
+		required: 'required', placeholder: 'Digite a Localização',
+		autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<div class="field">
+			<%= f.label :how_to_apply, 'Como se candidatar' %>
+			<%= f.radio_button :how_to_apply, 'Email' %> Email
+			<%= f.radio_button :how_to_apply, 'URL' %> URL
+		</div>
+
+		<%= f.text_field :apply_content, class: 'form-control',
+		required: 'required', placeholder: 'Digite a URL/E-mail',
+		autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :city_id, 'Cidade' %>
+		<%= f.collection_select(:city_id, City.all, :id, :name,
+		{ prompt: 'Selecionar Cidade' }, { class: 'form-control', required: 'required' }) %>
+	</div>
+
+	<div class="actions"> <br>
+		<%= f.submit nil, class: 'btn btn-primary btn-lg top' %>
+	</div>
+<% end %>

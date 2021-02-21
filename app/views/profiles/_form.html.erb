@@ -1,0 +1,48 @@
+<%= form_for(profile) do |f| %>
+	<%= has_errors?(profile) %>
+
+	<div class="field">
+		<%= f.label :logo, 'Logo' %>
+		<%= f.file_field :logo %>
+	</div>
+
+	<div class="field">
+		<%= f.label :name, 'Nome da Empresa' %>
+		<%= f.text_field :name, class: 'form-control',
+		required: 'required', placeholder: 'Digite o nome' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :phone, 'Telefone' %>
+		<%= f.text_field :phone, class: 'form-control',
+		required: 'required', placeholder: 'Digite o telefone' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :about, 'Descrição' %>
+		<%= f.text_area :about, class: 'form-control', required: 'required',
+		placeholder: 'Digite a descrição', autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :responsible_name, 'Nome do Responsavel' %>
+		<%= f.text_field :responsible_name, class: 'form-control',
+		required: 'required', placeholder: 'Digite o nome do Responsavel' %> 
+	</div>
+
+	<div class="field">
+		<%= f.label :website, 'Website' %>
+		<%= f.url_field :website, class: 'form-control', required: 'required',
+		placeholder: 'Digite o website', autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :city_id, 'Cidade' %>
+		<%= f.collection_select(:city_id, City.all, :id, :name,
+		{ prompt: 'Selecionar Cidade' }, { class: 'form-control', required: 'required' }) %>
+	</div>
+
+	<div class="acttions"><br>
+		<%= f.submit nil, class: 'btn btn-primary btn-lg top' %>
+	</div>
+<% end %>

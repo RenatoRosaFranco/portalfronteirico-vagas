@@ -1,0 +1,43 @@
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class='row'>
+					<div class='col-md-12'>
+						<%= link_to 'Adicionar Vaga', new_job_path, class: 'btn btn-primary btn-lg top' %>
+					</div>
+				</div>
+
+				<div id="search"><br>
+					<%= form_for(:search, { url: search_jobs_path, method: :get }) do |f| %>
+						<div class="field">
+							<%= f.text_field :q, placeholder: 'Buscar...', class: 'form-control' %>
+						</div>
+					<% end %>
+				</div>
+				<br>
+			  
+			  <div id='jobs'>
+			  	<% @jobs.each do |job| %>
+			  		<%= render job %>
+			  	<% end %>
+				</div>
+
+				<div id='pagination'>
+					<div class='text-center'>
+						<%= paginate(@jobs) %>
+					</div>
+				</div>
+
+			  <div class='row'>
+			  	<div class="col-md-12">
+			  		<% if current_user %>
+			  			<%= link_to 'Editar Perfil', edit_profile_path(current_user.profile), class: 'btn 	btn-primary btn-lg' %>
+			  		<% end %>
+			  	</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</section>

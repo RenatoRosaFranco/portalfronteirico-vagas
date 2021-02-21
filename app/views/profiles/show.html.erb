@@ -1,0 +1,89 @@
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="field">
+					<div class='panel panel-default'>
+						<div class='panel-default'>
+							<div class='panel-body'>
+							<h5 class='bold'>Logo</h5>
+								<p>Docker</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class='panel panel-default'>
+						<div class='panel-body'>
+							<h5 class='bold'>Nome da Empresa</h5>
+							<%= @profile.name %>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class='panel panel-default'>
+						<div class='panel-body'>
+							<h5 class='bold'>Telefone</h5>
+							<%= @profile.phone %>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class='panel-default'>
+						<div class='panel-body'>
+							<h5 class='bold'>Descrição</h5>
+							<p><%= @profile.website %></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class='panel-default'>
+						<div class='panel-body'>
+							<h5 class='bold'>Website</h5>
+							<%= @profile.responsible_name %>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class='panel panel-default'>
+						<div class='panel-body'>
+							<h5 class='bold'>Nome do Responsavel</h5>
+							<%= @profile.responsible_name %>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class='panel panel-default'>
+						<div class='panel-body'>
+							<h5 class='bold'>Cidade</h5>
+							<%= @profile.city.name %>
+						</div>
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= link_to 'Editar', edit_profile_path(current_user.profile) %>
+					<%= link_to 'Voltar', jobs_path %>
+				</div>
+
+				<div class="delete-profile">
+					<% if current_user.eql?(@profile.user) %>
+						<%= link_to profile_path(current_user.profile),
+							method: :delete,
+							data: { confirm: 'Você realmente deseja excluir seu perfil?' },
+							class: 'btn btn-danger btn-lg top' do  %>
+								Deletar Conta
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
