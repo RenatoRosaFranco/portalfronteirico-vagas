@@ -3,6 +3,39 @@
 <% provide :keywords, '' %>
 <% provide :ld_json, {} %>
 
+<section id="presenter" class='jumbotron' style='margin-top: -20px;'>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="col-md-8 col-md-offset-2">
+					<%= form_for(:search) do |f| %>
+
+					<div class='panel panel-default'>
+						<div class='panel-body'>
+					  	<div class="col-md-5">
+					    	<%= f.text_field :keywords, class: 'form-control',
+					    	required: 'required', autocomplete: 'off',
+					    	placeholder: 'Palavras-chave' %>
+					  	</div>
+
+					  	<div class='col-md-5'>
+				       	<%= f.text_field :location, class: 'form-control',
+				       	required: 'required', autocomplete: 'off',
+				       	placeholder: 'Local' %>
+				    	</div>
+					
+					  	<div class="col-md-2 text-center">
+						   	<%= f.submit 'Buscar', class: 'btn btn-primary btn-lg' %>
+					  	</div>
+					  </div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <section id="content">
 	<div class="container">
 		<div class="row">
