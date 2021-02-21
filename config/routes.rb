@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
 	# Authentication
 	# @implemented
-  devise_for :users, {}
+  devise_for :users, {
+  	# some code here
+  }
 
   # Application
   # @implemented
@@ -16,13 +18,15 @@ Rails.application.routes.draw do
   
   # Jobs
   # @implemented
+  resources :users
+  resources :job_applications, only: [:create]
   resources :jobs do
    	
    	# Member
    	# @implemented
    	member do
-   		get 'active'   => 'jobs#inactive'
-   		get 'inactive' => 'jobs#active'
+   		post 'active'   => 'jobs#active'
+   		post 'inactive' => 'jobs#inactive'
    	end
 
    	# Collection

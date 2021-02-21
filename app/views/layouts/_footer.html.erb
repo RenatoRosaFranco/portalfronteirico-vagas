@@ -4,19 +4,35 @@
 			<div class="col-md-12">
 				
 				<div class="col-md-3">
-					
+					<h4 class="bold">Sitemap</h4>
+					<ul class="list-unstyled">
+						<li><%= link_to 'Home', root_path %></li>
+						<li><%= link_to 'Contato', root_path %></li>
+						<li><%= link_to 'Sobre Nós', root_path %></li>
+						<li><%= link_to 'Termos de Uso', root_path %></li>
+					</ul>
 				</div>
 
 				<div class="col-md-3">
-					
+					<h4 class='bold'>Empresas</h4>
+					<ul class="list-unstyled">
+						<li><%= link_to 'Publicar Vagas', new_job_path %></li>
+						<li><%= link_to 'Entrar', new_user_session_path %></li>
+					</ul>
 				</div>
 
 				<div class="col-md-3">
-					
+					<h4 class='bold'>Candidatos</h4>
+					<ul class="list-unstyled">
+						<li><%= link_to 'Buscar Vagas', jobs_path %></li>
+					</ul>
 				</div>
 
 				<div class="col-md-3">
-					
+					<h4 class='bold'>Procurando Estágio/Estágiarios?</h4>
+					<ul class="list-unstyled">
+						<li><%= link_to 'Buscar Vagas', jobs_path %></li>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-class JobsController < ApplicationController
+class JobsController <:: ApplicationController
 	before_action :set_job, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+	respond_to :html, :json, :js
 
 	def index
 		@jobs = Job.active.page(params[:page]).per(1)
@@ -42,15 +43,17 @@ class JobsController < ApplicationController
 	end
 
 	def active
-		@job.update(status: 'active').save
+		@job = Job.find(params[:id])
+		@job.update(status: 'active')
 		flash[:notice] = 'Vaga ativada com sucesso.'
-		respond_with @job
+		redirect_to job_path(@job)
 	end
 
 	def inactive
-		@job.update(status: 'expired').save
+		@job = Job.find(params[:id])
+		@job.update(status: 'expired')
 		flash[:notice] = 'Vaga expirada com sucesso.'
-		respond_with @job
+		redirect_to job_path(@job)
 	end
 
 	def my_jobs
@@ -71,6 +74,7 @@ class JobsController < ApplicationController
 						 :occupation_area_id,
 						 :hiring_type_id,
 						 :salary,
+						 :featured,
 						 :modality,
 						 :location,
 						 :how_to_apply,

@@ -18,5 +18,28 @@
 
 body {
   position: relative;
-  font-size: 12px;
+  font-size: 16px;
+}
+
+.bold {
+  position: relative;
+  font-weight: bold;
+}
+
+.padding {
+  position: relative;
+  padding: 05px;
+}
+
+textarea {
+  position: relative;
+  resize: none !important;
+  height: 220px;
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  position: relative;
+  margin-top: 30px;
+  padding-top: 30px;
 }

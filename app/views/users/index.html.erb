@@ -1,0 +1,75 @@
+<% provide :title, '' %>
+<% provide :description, '' %>
+<% provide :ld_json, '' %>
+<% provide :keywords, '' %>
+
+<section id="presenter" class='jumbotron' style='margin-top: -20px;'>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="col-md-8 col-md-offset-2">
+					<%= form_for(:search) do |f| %>
+
+					<div class='panel panel-default'>
+						<div class='panel-body'>
+					  	<div class="col-md-5">
+					    	<%= f.text_field :name, class: 'form-control',
+					    	required: 'required', autocomplete: 'off',
+					    	placeholder: 'Empresa' %>
+					  	</div>
+
+					  	<div class='col-md-5'>
+				       	<%= f.text_field :location, class: 'form-control',
+				       	required: 'required', autocomplete: 'off',
+				       	placeholder: 'Local' %>
+				    	</div>
+					
+					  	<div class="col-md-2 text-center">
+						   	<%= f.submit 'Buscar', class: 'btn btn-primary btn-lg' %>
+					  	</div>
+					  </div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="companies-counter">
+					<div class="row">
+						<div class="col-md-12">
+							<h4 class="bold text-center">
+								<%= @users.count %> EMPRESA(S)
+								<hr>
+							</h4>
+						</div>
+					</div>
+				</div>
+				
+				<div id='companies'>
+					<div class="row">
+						<div class="col-md-12">
+						 <% for i in 1..60 %>
+							 <%= render @users %>
+						 <% end %>
+						</div>
+					</div>
+				</div>
+
+				<div id="pagination">
+					<div class="row">
+						<div class="col-md-12">
+							<%= paginate(@users) %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

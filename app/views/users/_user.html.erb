@@ -1,0 +1,19 @@
+<%= link_to user_path(user) do %>
+<div class="users col-md-4">
+	<div class="panel panel-default">
+		<div class="jumbotron">
+			
+		</div>
+		<div class="panel-body">
+			<ul class="list-unstyled list-inline">
+				<li class='pull-left'><p><%= user.profile.name %></p></li>
+				<li class='pull-right'><p>
+					<%= user.jobs.count %>
+					vaga(s)
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<% end %>

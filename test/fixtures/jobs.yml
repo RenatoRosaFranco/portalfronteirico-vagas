@@ -6,6 +6,7 @@
 #  apply_content      :string
 #  description        :text
 #  expiration         :date
+#  featured           :boolean
 #  how_to_apply       :integer
 #  location           :string
 #  modality           :integer

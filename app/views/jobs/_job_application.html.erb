@@ -1,0 +1,38 @@
+<div class='col-md-10 col-md-offset-1'>
+<%= form_for(job_application, { multipart: true }) do |f| %>
+	<%= has_errors?(job_application) %>
+
+	<div class="field padding">
+		<%= f.label :name, 'Seu nome' %>
+		<%= f.text_field :name, class: 'form-control', required: 'required',
+		placeholder: 'Digite o nome', autocomplete: 'off' %>
+	</div>
+
+	<div class="field padding">
+		<%= f.label :email, 'Seu email' %>
+		<%= f.text_field :email, class: 'form-control', required: 'required',
+		placeholder: 'Digite o e-mail', autocomplete: 'off' %>
+	</div>
+
+	<div class="field padding">
+		<%= f.label :salary, 'Pretensão salarial' %>
+		<%= f.number_field :salary, class: 'form-control', required: 'required',
+		placeholder: 'Digite o salário', autocomplete: 'off' %>
+	</div>
+
+	<div class="field padding">
+		<%= f.label :cv_field, "Selecione seu currículo" %>
+		<%= f.file_field :cv_field %>
+	</div>
+
+	<div class="field padding">
+		<%= f.label :short_letter, 'Carta de Apresentação' %>
+		<%= f.text_area :short_letter, class: 'form-control', required: 'required',
+		placeholder: 'Digite sua bio', autocomplete: 'off' %>
+	</div>
+
+	<div class="action text-center"> <br />
+		<%= f.submit 'Enviar candidatura', class: 'btn btn-primary btn-lg top' %>
+	</div>
+<% end %>
+</div>

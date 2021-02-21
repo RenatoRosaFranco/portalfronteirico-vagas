@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProfilesController < ApplicationController
+class ProfilesController <:: ApplicationController
 	before_action :authenticate_user!
 	before_action :set_profile, only: [:edit, :update]
 	respond_to :html, :json, :js

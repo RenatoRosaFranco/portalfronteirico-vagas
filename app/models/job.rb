@@ -8,6 +8,7 @@
 #  apply_content      :string
 #  description        :text
 #  expiration         :date
+#  featured           :boolean
 #  how_to_apply       :integer
 #  location           :string
 #  modality           :integer
@@ -29,6 +30,8 @@
 #  index_jobs_on_user_id             (user_id)
 #
 class Job < ApplicationRecord
+	include Mailerable
+	
 	self.table_name  = 'jobs'
 	self.primary_key = 'id'
 
@@ -46,6 +49,7 @@ class Job < ApplicationRecord
 
 	# Scope
 	# @implemented
+	scope :featured, -> { where(featured: true) }
 	scope :by_title, -> (title) { where("title LIKE ?", "%#{title}%") }
 	scope :recents,  -> { where(created_at: :desc) }
 	scope :lasts,    -> { where(created_at: :asc) }
