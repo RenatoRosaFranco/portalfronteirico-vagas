@@ -4,3 +4,9 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+
+task :expire_jobs do
+	puts 'Start expiring jobs'
+	puts 'finished expiring jobs'
+end

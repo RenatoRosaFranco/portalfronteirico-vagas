@@ -80,6 +80,8 @@ State.create(
 	]
 )
 
+state = State.where(acronym: 'RS').first
+
 # City
 # @implemented
 City.destroy_all
@@ -88,7 +90,27 @@ City.create(
 		{
 			name: 'São Borja',
 			capital: false,
-			state: State.where(acronym: 'RS').first
+			state: state
+		},
+		{
+			name: 'Unistalda',
+			capital: false,
+			state: state
+		},
+		{
+			name: 'Itaqui',
+			capital: false,
+			state: state
+		},
+		{
+			name: 'São Luiz Gonzaga',
+			capital: false,
+			state: state
+		},
+		{
+			name: 'Santo Ângelo',
+			capital: false,
+			state: state
 		}
 	]
 )
