@@ -3,6 +3,7 @@
 class ProfilesController <:: ApplicationController
 	before_action :authenticate_user!
 	before_action :set_profile, only: [:edit, :update]
+	rescue_from ActiveRecord::RecordNotFound, with: :not_found
 	respond_to :html, :json, :js
 
 	def show
