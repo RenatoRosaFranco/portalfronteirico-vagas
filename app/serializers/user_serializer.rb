@@ -23,5 +23,8 @@
 #
 class UserSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :id, :email, :admin
+
+  has_one :profile
+  has_many :jobs
 end

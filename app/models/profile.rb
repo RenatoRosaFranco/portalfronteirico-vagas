@@ -10,6 +10,7 @@
 #  name             :string
 #  phone            :string
 #  responsible_name :string
+#  slug             :string
 #  website          :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -22,6 +23,11 @@
 #  index_profiles_on_user_id  (user_id)
 #
 class Profile < ApplicationRecord
+  include ProfileFilter
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
+
   self.table_name  = 'profiles'
   self.primary_key = 'id'
 

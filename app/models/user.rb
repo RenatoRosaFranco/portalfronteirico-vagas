@@ -22,7 +22,9 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-	include Mailerable
+  include UserFilter
+
+	include Filterable, Mailerable
 
   self.table_name  = 'users'
   self.primary_key = 'id'
@@ -35,11 +37,11 @@ class User < ApplicationRecord
   # @implemented
   has_one :profile, dependent: :destroy
   has_many :jobs, dependent: :destroy
-	
+
 	# Callbacks
   # @implemented
 	after_create :create_profile, :welcome_user
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise 	:database_authenticatable, :registerable,

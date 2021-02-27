@@ -11,5 +11,7 @@
 #
 class RegionSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :id, :name
+
+  has_many :jobs
 end

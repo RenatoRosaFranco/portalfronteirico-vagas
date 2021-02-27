@@ -8,6 +8,7 @@
 #  name             :string
 #  phone            :string
 #  responsible_name :string
+#  slug             :string
 #  website          :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

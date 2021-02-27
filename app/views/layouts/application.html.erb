@@ -12,12 +12,13 @@
     <style type="text/css"><%= yield :css %></style>
     <script type="text/javascript"><%= yield :js %></script>
     <script src="https://kit.fontawesome.com/5165849ba2.js" crossorigin="anonymous"></script>
+    <script type="application/ld+json"><%= yield :ld_json %></script>
   </head>
   <body class="<%= controller.controller_name %>">
-    <%= render 'layouts/header' %>  
+    <%= render 'layouts/header' %>
       <%= yield %>
     <%= render 'layouts/footer' %>
-  
+
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v9.0&appId=557006248313894&autoLogAppEvents=1" nonce="NeOchGwo"></script>
 

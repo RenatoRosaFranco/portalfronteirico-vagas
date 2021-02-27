@@ -3,10 +3,12 @@
 class JobsController <:: ApplicationController
 	before_action :set_job, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+	rescue_from ActiveRecord::RecordNotFound, with: :not_found
 	respond_to :html, :json, :js
 
 	def index
-		@jobs = Job.active.page(params[:page]).per(1)
+		@jobs = Job.filter(filtering_params).page(params[:page]).per(1)
+		respond_with @jobs
 	end
 
 	def new
@@ -64,22 +66,17 @@ class JobsController <:: ApplicationController
 	private
 
 	def set_job
-		@job = Job.find(params[:id])
+		@job = Job.friendly.find(params[:id])
+	end
+
+	def filtering_params
+		params[:search].slice(:keywords, :location) if (params)
 	end
 
 	def job_params
-		params.require(:job).
-			permit(:title, 
-						 :description,
-						 :occupation_area_id,
-						 :hiring_type_id,
-						 :salary,
-						 :featured,
-						 :modality,
-						 :location,
-						 :how_to_apply,
-						 :apply_content,
-						 :city_id,
+		params.require(:job).permit(:title, :description, :occupation_area_id,
+						 :hiring_type_id, :salary, :featured, :modality, :location,
+						 :how_to_apply, :apply_content, :deficiency_id, :city_id,
 						 :user_id)
 	end
 end

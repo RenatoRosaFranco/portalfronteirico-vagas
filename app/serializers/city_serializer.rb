@@ -7,6 +7,7 @@
 #  id         :integer          not null, primary key
 #  capital    :boolean
 #  name       :string
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  state_id   :integer
@@ -17,5 +18,7 @@
 #
 class CitySerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :id, :name, :capital
+
+  has_many :jobs
 end

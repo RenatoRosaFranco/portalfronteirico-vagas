@@ -10,6 +10,7 @@
 #  name             :string
 #  phone            :string
 #  responsible_name :string
+#  slug             :string
 #  website          :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -23,5 +24,8 @@
 #
 class ProfileSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :id, :logo, :name, :phone, :responsible_name,
+             :about, :website
+
+  belongs_to :user
 end

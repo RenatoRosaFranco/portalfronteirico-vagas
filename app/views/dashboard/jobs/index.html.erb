@@ -1,0 +1,24 @@
+<% provide :title, '' %>
+<% provide :description, '' %>
+<% provide :keywords, '' %>
+<% provide :ld_json, {} %>
+
+<div class="col-md-12">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4">
+    <%= link_to '', class: 'btn btn-primary btn-lg top' %>
+       Publicar uma vaga
+    <% end %>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <% @jobs.each do |job| %>
+    <%= render job %>
+  <% end %>
+</div>

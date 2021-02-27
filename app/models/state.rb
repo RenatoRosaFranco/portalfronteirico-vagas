@@ -14,6 +14,11 @@
 #  index_states_on_region_id  (region_id)
 #
 class State < ApplicationRecord
+  include StateFilter
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
+
   self.table_name  = 'states'
   self.primary_key = 'id'
 

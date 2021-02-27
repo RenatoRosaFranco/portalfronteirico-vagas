@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  capital    :boolean
 #  name       :string
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  state_id   :integer

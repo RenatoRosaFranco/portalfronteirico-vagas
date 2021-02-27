@@ -42,7 +42,7 @@ header {
   .navbar-default {
     position: relative;
     background-color: #01355c;
-    border: 1px solid #01355c;
+    border: 0px solid;
     border-radius: 0px;
 
     .navbar-brand {
@@ -66,7 +66,45 @@ header {
 #presenter {
   position: relative;
   background-color: #01355c;
+  color: #FFF;
   margin-top: -20px;
+}
+
+.uppercase {
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* post-job */
+#post-job {
+  position: relative;
+  margin-top: -30px;
+  // background-color: pink;
+  padding-bottom: 60px;
+}
+
+/* Partners */
+.partners-logo {
+  position: relative;
+  width: 160px;
+}
+
+#last-jobs {
+  position: relative;
+  margin-top: 0px;
+  margin-bottom: 100px;
+}
+
+#newsletter-block {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#partners {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 footer {

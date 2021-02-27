@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_203404) do
+ActiveRecord::Schema.define(version: 2021_02_27_203844) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,7 +39,15 @@ ActiveRecord::Schema.define(version: 2021_02_21_203404) do
     t.integer "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
+  create_table "deficiencies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -57,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_203404) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -76,16 +85,31 @@ ActiveRecord::Schema.define(version: 2021_02_21_203404) do
     t.string "apply_content"
     t.integer "city_id"
     t.boolean "featured"
+    t.string "slug"
+    t.integer "deficiency_id"
     t.index ["city_id"], name: "index_jobs_on_city_id"
+    t.index ["deficiency_id"], name: "index_jobs_on_deficiency_id"
     t.index ["hiring_type_id"], name: "index_jobs_on_hiring_type_id"
     t.index ["occupation_area_id"], name: "index_jobs_on_occupation_area_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "newsletters", force: :cascade do |t|
+    t.string "email"
+    t.integer "modality"
+    t.string "token"
+    t.boolean "status"
+    t.date "signup_date"
+    t.date "cancel_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "occupation_areas", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -99,6 +123,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_203404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "city_id"
+    t.string "slug"
     t.index ["city_id"], name: "index_profiles_on_city_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

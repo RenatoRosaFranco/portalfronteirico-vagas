@@ -13,11 +13,13 @@
 #  location           :string
 #  modality           :integer
 #  salary             :float
+#  slug               :string
 #  status             :integer
 #  title              :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  city_id            :integer
+#  deficiency_id      :integer
 #  hiring_type_id     :integer
 #  occupation_area_id :integer
 #  user_id            :integer
@@ -25,18 +27,24 @@
 # Indexes
 #
 #  index_jobs_on_city_id             (city_id)
+#  index_jobs_on_deficiency_id       (deficiency_id)
 #  index_jobs_on_hiring_type_id      (hiring_type_id)
 #  index_jobs_on_occupation_area_id  (occupation_area_id)
 #  index_jobs_on_user_id             (user_id)
 #
 class Job < ApplicationRecord
-	include Mailerable
-	
+  include JobFilter
+  include Mailerable
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged]
+
 	self.table_name  = 'jobs'
 	self.primary_key = 'id'
 
 	# Relationships
 	# @implemented
+  belongs_to :deficiency, optional: true
 	belongs_to :occupation_area
 	belongs_to :hiring_type
 	belongs_to :user

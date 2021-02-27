@@ -1,72 +1,171 @@
+<section id="presenter" style="padding-bottom: 80px;
+padding-top: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= link_to users_path, class: 'btn btn-primary btn-lg top',
+              style: 'padding: 13px;' do %>
+              <i class="fas fa-arrow-circle-left"></i>
+              Voltar
+            <% end %>
+
+            <% if (current_user && owner?(@job))  %>
+              <%= link_to edit_profile_path(current_user.profile),
+                class: 'btn btn-default btn-lg top',
+                style: 'background-color: transparent;
+                color: #FFF; padding: 13px;
+                font-weight: bold;
+                border: 2px solid #EEE;' do %>
+                  Editar Vaga
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12">
+             <h1 class='bold'><%= @job.title %></h1>
+             <ul class="list-unstyled list-inline">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <%= @job.user.profile.name %>,
+                </li>
+                <li>
+                  <i class="fas fa-globe-americas bold"></i>
+                  <%= @job.modality %>
+                  ( São Borja, Rio Grande do Sul, Brasil)
+                </li>
+                <li>
+                	<i class="fas ga-globe-americas bold"></i>
+                	<%= @job.created_at %>
+                </li>
+              </ul>
+              <br>
+
+              <ul class="list-unstyled list-inline">
+              	<li>
+              		<span class='badge'>
+              			<%= @job.hiring_type.name %>
+              		</span>
+              	</li>
+              	<li>
+              		<span class='badge'>
+              			<%= @job.occupation_area.name %>
+              		</span>
+              	</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="content">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<ul class="list-unstyled"> 
-					<% if (@job.active?) then %>
+				<ul class="list-unstyled">
+
+<!-- 					<% if (@job.active?) then %>
 						<li>
-							<%= link_to 'Expirar', inactive_job_path(@job), method: :post, 
-							class: 'btn btn-primary btn-lg' %>		
+							<%= link_to 'Expirar', inactive_job_path(@job), method: :post,
+							class: 'btn btn-primary btn-lg' %>
 						</li>
 					<% else %>
 						<li>
 							<%= link_to 'Ativar', active_job_path(@job), method: :post,
-							class: 'btn btn-primary btn-lg' %>	
+							class: 'btn btn-primary btn-lg' %>
 						</li>
 					<% end %>
-				</ul>
-		    
-		    <div class="field">
-		    	<h1 class='bold'>
-		    		<%= @job.title %>
-		    		<small><%= @job.status %></small>	
-		    	</h1>
-		    </div>
+				</ul> -->
 
-		    <div class="field">
-		    	<p><%= @job.description %></p>
-		    </div>
+				<div class='row'>
+					<div class='col-md-8'>
+  			    <div class="field"><br>
+              <h2 class='bold uppercase'>Descrição da Vaga</h2>
+              <br>
+  			    	<p><%= @job.description %></p>
+  			    </div>
 
-		    <div id="appplication">
-		    	<% if (@job.how_to_apply.eql?('Email')) then %>
-		    		
-		    		<button type="button" class="btn btn-primary btn-lg" 
-		    			data-toggle="modal" data-target="#jobApplicationModal">
-  							Quero me candidatar
-						</button>
+            <div class="field">
+              <h2 class='bold uppercase'>Salário</h2>
+              <p><%= @job.salary %></p>
+            </div>
+
+  			    <div id="application">
+  			    	<% if (@job.how_to_apply.eql?('Email')) then %>
+
+  			    		<button type="button" class="btn btn-primary btn-lg"
+  			    			data-toggle="modal" data-target="#jobApplicationModal">
+  	  							Quero me candidatar
+  							</button>
 
 
-		    		<div class="modal fade" id="jobApplicationModal" tabindex="-1" 
-		    		role="dialog" aria-labelledby="myModalLabel">
-						  <div class="modal-dialog" role="document">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title text-center bold" id="myModalLabel">
-						        	Candidate-se a vaga de <%= @job.title %>
-						        </h4>
-						      </div>
-						      <div class="modal-body">
-						        <%= render 'job_application', job_application: JobApplication.new %>
-						      </div>
-						      <div class="modal-footer">
-						      </div>
-						    </div>
-						  </div>
-						</div>
+<!--   			    		<div class="modal fade" id="jobApplicationModal" tabindex="-1"
+  			    		role="dialog" aria-labelledby="myModalLabel">
+  							  <div class="modal-dialog" role="document">
+  							    <div class="modal-content">
+  							      <div class="modal-header">
+  							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  							        <h4 class="modal-title text-center bold" id="myModalLabel">
+  							        	Candidate-se a vaga de <%= @job.title %>
+  							        </h4>
+  							      </div>
+  							      <div class="modal-body">
+  							        <%= render 'job_application', job_application: JobApplication.new %>
+  							      </div>
+  							      <div class="modal-footer">
+  							      </div>
+  							    </div>
+  							  </div>
+  							</div> -->
 
-		    	<% else %>
-		    		<%=  link_to @job.apply_content,
-		    			class: 'btn btn-primary btn-lg top' do %>
-		    				Quero me Candidatar
-		    		<% end %>
-		    	<% end %>
-		    </div>
+    			    	<% else %>
+                  <div class='col-md-12'>
+                    <div class='panel panel-default'>
+    			    		     <div class='panel-body'>
+                         <%=  link_to @job.apply_content,
+        			    			  class: 'btn btn-primary btn-lg top' do %>
+        			    				 Quero me Candidata
+        			    		   <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    			    	<% end %>
+              </div>
+            </div>
 
-		    <div class="actions">
-		    	<%= link_to 'Editar', edit_job_path(@job) %>
-		      <%= link_to 'Voltar', jobs_path %>
-		    </div>
+            <div class="col-md-4" style='margin-top: -60px;'>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class='text-center'>
+                    <%= image_tag(@job.user.profile.logo,
+                      style: 'width: 120px; height: 120px;') %>
+                  </div>
+                  <h3 class='text-center bold'>
+                    Sobre a <%= @job.user.profile.name %>
+                  </h3>
+                  <p><%= truncate(@job.user.profile.about, length: 145) %></p>
+
+                  <div class='text-center'>
+                    <%= link_to user_path(@job.user.profile),
+                      class: 'btn btn-primary btn-lg top' do %>
+                        Perfil da Empresa
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 			</div>
 		</div>
 	</div>

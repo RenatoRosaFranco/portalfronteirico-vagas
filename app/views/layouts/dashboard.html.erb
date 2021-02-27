@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Portal Fronteiriço | <%= yield :title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style type="text/css"><%= yield :css %></style>
+    <script type="text/javascript"><%= yield :js %></script>
+    <script src="https://kit.fontawesome.com/5165849ba2.js" crossorigin="anonymous"></script>
+    <script type="application/ld+json"><%= yield :ld_json %></script>
+  </head>
+  <body class="<%= controller.controller_name %>">
+    <%= render 'layouts/header' %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class='text-center'>
+            <%= image_tag('logo.png',
+              style: 'width: 120px; height: 120px;
+              border-radius: 120px; margin-top: 10px;') %>
+          </div>
+          <h1 class='text-center bold'>MINHA CONTA</h1>
+          <hr>
+
+          <div class='col-md-6 col-md-offset-3'>
+            <nav id='navigation'>
+              <ul class="nav nav-pills">
+                <li><%= link_to 'Dashboard', dashboard_path %></li>
+                <li><%= link_to 'Vagas Publicadas', jobs_path %></li>
+                <li><%= link_to 'Invoices', dashboard_path %></li>
+                <li><%= link_to 'Perfil da Empresa', edit_profile_path(current_user.profile) %></li>
+              </ul>
+            </nav>
+          </div>
+          <br><br><br>
+
+          <div id='content'>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render 'layouts/footer' %>
+    <!-- addons -->
+    <%= render 'shared/freshchat' %>
+  </body>
+</html>

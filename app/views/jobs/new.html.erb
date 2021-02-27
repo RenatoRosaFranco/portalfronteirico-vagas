@@ -1,10 +1,27 @@
+<% provide :title, '' %>
+<% provide :description, '' %>
+<% provide :keywords, '' %>
+<% provide :ld_json, {} %>
+
 <section id="content">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<%= render 'form', job: @job %>
+        <div class='col-md-8 col-md-offset-2'>
+          <div class="panel-heading">
+            <%= link_to jobs_path,
+              class: 'btn btn-primary btn-lg top' do %>
+                <i class="fas fa-chevron-circle-left"></i>
+                Voltar
+            <% end %>
+          </div>
 
-				<%= link_to 'Voltar', jobs_path %>
+          <div class='panel panel-default'>
+            <div class='panel-body'>
+              <%= render 'form', job: @job %>
+            </div>
+          </div>
+        </div>
 			</div>
 		</div>
 	</div>

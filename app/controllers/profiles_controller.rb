@@ -6,8 +6,8 @@ class ProfilesController <:: ApplicationController
 	respond_to :html, :json, :js
 
 	def show
-		@profile = Profile.find(params[:id])
-		respond_with @profile
+		@profile = Profile.friendly.find(params[:id])
+		redirect_to user_path(@profile.user)
 	end
 
 	def edit
@@ -16,7 +16,8 @@ class ProfilesController <:: ApplicationController
 
 	def update
 		@profile.update(profile_params)
-		respond_with @profile
+		flash[:notice] = 'Perfil atualizado com sucesso.'
+		redirect_to user_path(@profile.user)
 	end
 
 	def destroy

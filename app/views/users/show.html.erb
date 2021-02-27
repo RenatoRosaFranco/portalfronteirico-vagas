@@ -1,13 +1,131 @@
-<% provide :title, '' %>
+ <% provide :title, '' %>
 <% provide :description, '' %>
 <% provide :keywords, '' %>
 <% provide :ld_json, {} %>
+
+<section id="presenter" style="padding-bottom: 80px;
+padding-top: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= link_to users_path, class: 'btn btn-primary btn-lg top',
+              style: 'padding: 13px;' do %>
+              <i class="fas fa-arrow-circle-left"></i>
+              Voltar
+            <% end %>
+
+            <% if (current_user)  %>
+              <%= link_to edit_profile_path(current_user.profile),
+                class: 'btn btn-default btn-lg top',
+                style: 'background-color: transparent;
+                color: #FFF; padding: 13px;
+                font-weight: bold;
+                border: 2px solid #EEE;' do %>
+                  Editar empresa
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-2">
+              <%= image_tag(@user.profile.logo, class: 'avatar-md',
+              style: 'width: 120px; height: 120px') %>
+            </div>
+            <div class="col-md-10">
+              <h1 class='bold'><%= @user.profile.name %></h1>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <%= @user.profile.city.name %>,
+                  <%= 'Rio Grande do Sul' %>
+                </li>
+                <li>
+                  <i class="fas fa-globe-americas bold"></i>
+                  <%= @user.profile.website %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="content">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				
+
+        <div class="row">
+          <div class="col-md-8">
+            <nav>
+              <ul class="nav nav-pills">
+                <li class='role' class='active'>
+                  <h3>
+                    <%= link_to '' do %>
+                      Descrição da Empresa
+                    <% end %>
+                  </h3>
+                </li>
+                <li class='role' style='margin-left: 20px;'>
+                  <h3>
+                    <%= link_to  '' do %>
+                      Vagas ( <%= @user.jobs.count %>)
+                    <% end %>
+                  </h3>
+                </li>
+              </ul>
+            </nav>
+            <hr>
+
+            <div id="info">
+              <p style='font-size: 18px;'><%= @user.profile.about %></p>
+            </div>
+          </div>
+
+          <div class="col-md-4" style="margin-top: -50px;">
+            <div class="panel panel-default">
+              <div class='panel-heading'>
+                <h4 class='bold'>Envie me vagas de
+                <%= @user.profile.name %></h4>
+              </div>
+              <div class="panel-body">
+                <%= form_for(:newsletter) do |f| %>
+
+                  <div class="field padding">
+                    <%= f.email_field :email, class: 'form-control',
+                    require: 'required', placeholder: 'Digite o e-mail',
+                    autocomplete: 'off' %>
+                  </div>
+
+                  <div class="field padding">
+                    <%= f.select(:modality, {
+                      'Diario'  => 0,
+                      'Semanal' => 1,
+                      'Mensal'  => 2
+                    },
+                    { prompt: 'Selecionar Plano'},
+                    { class: 'form-control', required: 'required' }) %>
+                  </div>
+
+                  <div class="action padding">
+                    <%= f.submit 'Criar Alerta',
+                    class: 'btn btn-primary btn-lg top',
+                    style: 'width: 100%;' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
 			</div>
 		</div>
 	</div>

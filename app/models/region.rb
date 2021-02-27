@@ -8,6 +8,11 @@
 #  updated_at :datetime         not null
 #
 class Region < ApplicationRecord
+  include RegionFilter
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
+
 	self.table_name  = 'regions'
 	self.primary_key = 'id'
 

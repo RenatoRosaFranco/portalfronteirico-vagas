@@ -37,6 +37,41 @@ OccupationArea.create(
 		{ name: 'Segurança' },
 		{ name: 'Testes' },
 		{ name: 'Treinamentos / Instrutoria' },
+		# automated
+		{ name: 'Comercial, Vendas' },
+		{ name: 'Informática, TI, Telecomunicações' },
+		{ name: 'Construção, Manutenção' },
+		{ name: 'Alimentação / Gastronomia' },
+		{ name: 'Saúde' },
+		{ name: 'Serviços Gerais' },
+		{ name: 'Recursos Humanos' },
+		{ name: 'Marketing' },
+		{ name: 'Educação, Ensino, Idiomas' },
+		{ name: 'Jurídica' },
+		{ name: 'Qualidade' },
+		{ name: 'Agricultura, Pecuária, Veterinária' },
+		{ name: 'Quimica, Petroquimica' },
+		{ name: 'Comércio Exterior, Importação, Exportação' },
+		{ name: 'Artes' },
+		{ name: 'Hotalaria, Turismo' },
+		{ name: 'Serviço Social e Comunitário' },
+		{ name: 'Industrial, Produção, Fábrica' },
+		{ name: 'Administração' },
+		{ name: 'Logistica' },
+		{ name: 'Telemarketing' },
+		{ name: 'Contábil, Finanças, Economia' },
+		{ name: 'Segurança' },
+		{ name: 'Transportes' },
+		{ name: 'Engenharia' },
+		{ name: 'Compras' },
+		{ name: 'Estética' },
+		{ name: 'Arquitetura, Decoração, Design' },
+		{ name: 'Moda' },
+		{ name: 'Comunicação, TV, Cinema' },
+		{ name: 'Auditoria' },
+		{ name: 'Ciências, Pesquisa' },
+		{ name: 'Meio Ambiente, Ecologia' },
+		{ name: 'Cultura, Lazer, Entretenimento' }
 	]
 )
 
@@ -50,7 +85,26 @@ HiringType.create(
 		{ name: 'CLT Full' },
 		{ name: 'Estágio' },
 		{ name: 'Freela' },
+		{ name: 'Temporário' },
+		{ name: 'Autônomo' },
+		{ name: 'Outros' },
+		{ name: 'Cooperado' },
+		{ name: 'Trainee' },
 		{ name: 'PJ' }
+	]
+)
+
+# Deficiency
+# @implemented
+Deficiency.destroy_all
+Deficiency.create(
+	[
+		{ name: 'Física' },
+		{ name: 'Visual' },
+		{ name: 'Auditiva' },
+		{ name: 'Deficiência Psicossocial' },
+		{ name: 'Intelectual' },
+		{ name: 'Reabilitados' }
 	]
 )
 

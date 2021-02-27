@@ -17,5 +17,7 @@
 #
 class StateSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :id, :name, :acronym
+
+  has_many :jobs
 end

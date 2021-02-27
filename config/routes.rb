@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-  post "/graphql", to: "graphql#execute"
+
 	# Authentication
 	# @implemented
   devise_for :users, {
@@ -19,13 +15,13 @@ Rails.application.routes.draw do
   # Searchs
   # @implemented
   get '/buscar' => 'jobs#search', as: :search_jobs
-  
+
   # Jobs
   # @implemented
   resources :users
   resources :job_applications, only: [:create]
   resources :jobs do
-   	
+
    	# Member
    	# @implemented
    	member do
@@ -43,4 +39,12 @@ Rails.application.routes.draw do
   # Profile
   # @implemented
   resources :profiles, only: [:show, :edit, :update, :edit, :destroy]
+
+  # Dashboard
+  # @implemented
+  namespace :dashboard, constraint: { subdomain: 'dashboard' } do
+    get '/' => 'home#index'
+    get '/jobs' => 'jobs#index'
+    get '/invoices' => 'invoices#index'
+  end
 end
