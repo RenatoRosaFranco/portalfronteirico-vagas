@@ -1,11 +1,6 @@
-MIGRATION_CLASS =
-  if ActiveRecord::VERSION::MAJOR >= 5
-    ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}"]
-  else
-    ActiveRecord::Migration
-  end
+# frozen_string_literal: true
 
-class CreateFriendlyIdSlugs < MIGRATION_CLASS
+class CreateFriendlyIdSlugs < ActiveRecord::Migration[5.2]
   def change
     create_table :friendly_id_slugs do |t|
       t.string   :slug,           :null => false

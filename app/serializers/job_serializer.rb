@@ -36,7 +36,7 @@ class JobSerializer
   include FastJsonapi::ObjectSerializer
   attributes :title, :description, :salary, :modality,
              :featured, :how_to_apply, :location, :status,
-             :expiration, :apply_content
+             :expiration, :apply_content, :slug
 
   belongs_to :occupation_area
   belongs_to :hiring_type

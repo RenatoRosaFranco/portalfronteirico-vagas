@@ -18,7 +18,7 @@
 #
 class CitySerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :name, :capital
+  attributes :id, :name, :capital, :slug
 
   has_many :jobs
 end

@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
-# Table name: regions
+# Table name: deficiencies
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -10,9 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class RegionSerializer
+class DeficiencySerializer
   include FastJsonapi::ObjectSerializer
   attributes :id, :name, :slug
-
-  has_many :jobs
 end

@@ -25,7 +25,7 @@
 class ProfileSerializer
   include FastJsonapi::ObjectSerializer
   attributes :id, :logo, :name, :phone, :responsible_name,
-             :about, :website
+             :about, :website, :slug
 
   belongs_to :user
 end

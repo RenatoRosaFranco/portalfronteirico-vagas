@@ -12,7 +12,7 @@
 #
 class OccupationAreaSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :name
+  attributes :id, :name, :slug
 
   has_many :jobs
 end
