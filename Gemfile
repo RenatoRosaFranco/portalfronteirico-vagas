@@ -61,6 +61,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'awesome_print'
   gem 'better_errors'
+  gem 'dotenv'
+  gem 'dotenv-rails'
   gem 'erd'
   gem 'rails-erd'
   gem 'annotate'
