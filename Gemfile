@@ -63,6 +63,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'dotenv'
   gem 'dotenv-rails'
+  gem 'clockwork'
   gem 'erd'
   gem 'rails-erd'
   gem 'annotate'
